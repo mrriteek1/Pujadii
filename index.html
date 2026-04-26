@@ -1,150 +1,252 @@
-<!DOCTYPE html><html lang="hi">
+<!DOCTYPE html>
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Engagement Gallery</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-<style>
-*{
- margin:0;
- padding:0;
- box-sizing:border-box;
- font-family:'Poppins',sans-serif;
-}
-html{scroll-behavior:smooth;}
-body{
- background:linear-gradient(-45deg,#0a0014,#2a0038,#4b001d,#120014,#3a0ca3);
- background-size:500% 500%;
- animation:bgMove 14s ease infinite;
- color:white;
- overflow-x:hidden;
-}/* floating particles */ body::before{ content:''; position:fixed; width:100%; height:100%; top:0; left:0; background:url('https://www.transparenttextures.com/patterns/stardust.png'); opacity:0.12; pointer-events:none; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puja ❤️ Jeetu | The Royal Union</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-/* luxury floating hearts */ body::after{ content:'❤️ ❤️ 💍 ❤️'; position:fixed; top:100%; left:5%; font-size:24px; opacity:0.15; animation:floatHearts 18s linear infinite; pointer-events:none; } @keyframes floatHearts{ 0%{transform:translateY(0) translateX(0);} 100%{transform:translateY(-120vh) translateX(40px);} } @keyframes bgMove{ 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-royal: #05050a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --premium-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 70%, #fbf5b7 100%);
+        }
 
-.top-bar{ background:linear-gradient(90deg,#1e1e1e,#3a0ca3,#7209b7,#1e1e1e); background-size:300% 300%; animation:premiumGlow 10s ease infinite; padding:12px; overflow:hidden; white-space:nowrap; box-shadow:0 0 20px rgba(114,9,183,.5); border-bottom:1px solid rgba(255,255,255,.15); position:relative; } @keyframes premiumGlow{ 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} } .top-bar span{ display:inline-block; padding-left:100%; font-family:'Poppins',sans-serif; font-size:18px; font-weight:600; letter-spacing:1px; animation:marquee 18s linear infinite; color:#f8f8f8; text-shadow:0 0 8px rgba(255,255,255,.3); } @keyframes marquee{ 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark-royal); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-.slider{ width:95%; max-width:1100px; aspect-ratio:16/9; margin:25px auto; border-radius:25px; overflow:hidden; position:relative; box-shadow:0 0 40px rgba(255,0,120,.6); } .slider img{ position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:1.2s ease-in-out; transform:scale(1.05); } .slider img.active{ opacity:1; transform:scale(1); filter:brightness(1.05) contrast(1.08) saturate(1.1); }
+        /* --- Fast Loader --- */
+        #loader {
+            position: fixed; height: 100vh; width: 100%; background: #000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999;
+        }
 
-.slider::after{ content:'✨ Premium Memories ✨'; position:absolute; bottom:15px; left:50%; transform:translateX(-50%); background:rgba(255,255,255,0.12); padding:10px 22px; border-radius:30px; font-size:14px; backdrop-filter:blur(15px); border:1px solid rgba(255,255,255,0.2); box-shadow:0 0 20px rgba(255,215,0,0.3); }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
 
-.section-title{ text-align:center; font-size:32px; color:#ffd700; margin-top:30px; text-shadow:0 0 15px gold; }
+        /* --- Header & Top Bar --- */
+        .top-marquee { background: rgba(212, 175, 55, 0.1); color: var(--gold); padding: 10px; overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--gold); font-family: 'Cinzel Decorative'; }
+        .top-marquee span { display: inline-block; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-.card{ width:90%; max-width:850px; margin:25px auto; padding:28px; border-radius:25px; background:rgba(255,255,255,0.08); backdrop-filter:blur(20px); box-shadow:0 0 30px rgba(255,0,140,.3); transition:.4s; } .card:hover{ transform:translateY(-10px) scale(1.02); box-shadow:0 0 45px rgba(255,215,0,.6); }
+        .main-header { text-align: center; padding: 40px 0; }
+        .main-header h1 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold); }
 
-.card::before{ content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transition:.8s; } .card:hover::before{ left:100%; }
+        /* --- Slider (YouTube 16:9) --- */
+        .slider-box {
+            width: 90%; max-width: 1000px; aspect-ratio: 16 / 9; margin: 10px auto 40px;
+            position: relative; border-radius: 20px; overflow: hidden;
+            border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1s ease-in-out; }
+        .slide.active { opacity: 1; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
 
-.btn{ display:inline-block; padding:16px 45px; background:linear-gradient(45deg,#ffd700,#ff4d00,#ff0066); color:white; text-decoration:none; border-radius:50px; font-size:18px; font-weight:700; margin-top:15px; box-shadow:0 0 20px rgba(255,215,0,.8); transition:.4s; } .btn:hover{ transform:scale(1.08); box-shadow:0 0 35px gold; }
+        /* --- Floating Robert & Bubble --- */
+        .robert-container {
+            position: fixed; bottom: 20px; left: 20px; z-index: 2000;
+            display: flex; align-items: center; gap: 10px; pointer-events: none;
+        }
+        #lottie-robert { width: 80px; height: 80px; pointer-events: auto; }
+        .speech-bubble {
+            background: var(--premium-gradient); color: #000;
+            padding: 10px 15px; border-radius: 15px 15px 15px 0;
+            font-size: 12px; font-weight: bold; min-width: 150px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); opacity: 0; transition: 0.5s;
+        }
 
-textarea{ width:80%; height:120px; border:none; outline:none; border-radius:20px; padding:15px; font-size:16px; }
+        /* --- Download Section (3 Folders) --- */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 10% 40px; }
+        .folder-card {
+            background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(212,175,55,0.2);
+            padding: 25px; border-radius: 20px; text-align: center; transition: 0.3s; position: relative;
+        }
+        .folder-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .badge { position: absolute; top: 10px; right: 10px; font-size: 10px; padding: 4px 10px; border-radius: 10px; font-weight: bold; }
+        .badge-active { background: #25D366; color: #000; }
+        .badge-soon { background: #ff3333; color: #fff; }
 
-.whatsapp-icon{ position:fixed; right:20px; bottom:30px; width:75px; height:75px; border-radius:50%; background:linear-gradient(135deg,#25D366,#128C7E); display:flex; align-items:center; justify-content:center; font-size:38px; box-shadow:0 0 30px rgba(37,211,102,.9); animation:pulse 2s infinite; z-index:999; cursor:pointer; } .whatsapp-icon img{ width:42px; height:42px; } @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.1)} 100%{transform:scale(1)} } @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.1)} 100%{transform:scale(1)} }
+        /* --- Buttons --- */
+        .btn-action {
+            background: var(--premium-gradient); color: #000; width: 100%;
+            padding: 12px; border-radius: 50px; border: none; font-weight: 700;
+            margin-top: 15px; cursor: pointer; transition: 0.3s; font-family: 'Poppins';
+        }
+        .btn-action:hover { box-shadow: 0 0 15px var(--gold); transform: scale(1.02); }
+        .btn-disabled { background: #444; color: #888; cursor: not-allowed; }
 
-.whatsapp-msg{ position:fixed; right:105px; bottom:45px; background:white; color:black; padding:14px 20px; border-radius:20px; display:none; font-weight:bold; box-shadow:0 0 20px rgba(0,0,0,.3); z-index:999; }
+        /* --- Shagun Section --- */
+        .qr-card { background: white; display: inline-block; padding: 15px; border-radius: 15px; margin-top: 15px; }
 
-footer{ text-align:center; padding:14px; background:rgba(0,0,0,0.75); color:#ffd700; margin-top:20px; font-size:15px; letter-spacing:1px; border-top:1px solid rgba(255,255,255,0.1); box-shadow:0 -3px 15px rgba(255,215,0,.2); backdrop-filter:blur(15px); } </style>
+        /* --- Floating Actions --- */
+        .fab-group { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+        .fab { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s; }
+        .fab:hover { transform: scale(1.1); }
 
+        .section-title { font-family: 'Cinzel Decorative', serif; font-size: 1.8rem; color: var(--gold); text-align: center; margin-top: 30px; letter-spacing: 2px; }
+    </style>
 </head>
-<body><div class="top-bar">
-<span>✨ Puja ❤️ Jeetu Engagement Ceremony | 24 April 2026 | जय श्री गणेश 🙏 | Forever Together 💍</span>
-</div><div class="slider">
-<img src="1.jpg" class="active">
-<img src="2.jpg">
-<img src="3.jpg">
-<img src="4.jpg">
-<img src="5.jpg">
-<img src="6.jpg">
-<img src="7.jpg">
-<img src="8.jpg">
-</div><div style="text-align:center;padding:20px;">
-<h2 style="font-size:38px;color:#ffd700;font-family:'Great Vibes',cursive;">24 April 2026</h2>
-<p style="font-size:18px;color:#ddd;">A Beautiful Day To Remember Forever 💍</p>
-</div><h2 class="section-title">📸 Download Photos</h2>
-<div class="card">
-<h3>Photos 1-30</h3>
-<a href="https://drive.google.com/file/d/1k3i6r9c87ir9OQBocEgvYlrk_MiiONIP/view?usp=drivesdk" class="btn">Download Now</a>
-</div><div class="card">
-<h3>Photos 30-60</h3>
-<a href="#" class="btn">Coming Soon</a>
-</div><div class="card">
-<h3>Photos 60-90</h3>
-<a href="#" class="btn">Coming Soon</a>
-</div><h2 class="section-title">💌 Guest Wishes</h2>
-<div class="card">
-<textarea placeholder="अपनी शुभकामनाएं लिखें..."></textarea><br>
-<a href="#" class="btn">Send Wishes</a>
-</div><div class="whatsapp-msg" id="whatsappMsg">
-हमारे WhatsApp Group में जुड़ने के लिए Click करें
-</div><a href="https://chat.whatsapp.com/EKEmOTadRoc3aODUG5yN7G?mode=gi_t" target="_blank">
-<div class="whatsapp-icon" onclick="showMsg()">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-</div>
-</a><div style="position:fixed;left:20px;bottom:30px;z-index:999;">
-<button id="musicBtn" style="background:linear-gradient(45deg,#ffd700,#ff0066);border:none;padding:14px 20px;border-radius:50px;color:white;font-weight:bold;box-shadow:0 0 20px gold;cursor:pointer;">🎵 Music</button>
-<audio id="bgMusic" loop>
-<source src="song.m4a" type="audio/mpeg">
-</audio>
-</div><footer>
-Made With ❤️ By Riteek | Premium Engagement App
-</footer><script>
-// smooth scroll reveal animation
-const observer=new IntersectionObserver((entries)=>{
- entries.forEach(entry=>{
-   if(entry.isIntersecting){
-     entry.target.style.opacity='1';
-     entry.target.style.transform='translateY(0px)';
-   }
- });
-});
+<body>
 
-document.querySelectorAll('.card,.section-title').forEach(el=>{
- el.style.opacity='0';
- el.style.transform='translateY(40px)';
- el.style.transition='1s';
- observer.observe(el);
-});
+    <div id="loader">
+        <div id="lottie-loader" style="width: 200px;"></div>
+        <h3 style="color:var(--gold); font-family:'Cinzel Decorative'; margin-top: 10px;">PREMIUM EXPERIENCE...</h3>
+    </div>
 
-// Smooth premium slider
-const slides=document.querySelectorAll('.slider img');
-let current=0;
-setInterval(()=>{
- slides[current].classList.remove('active');
- current=(current+1)%slides.length;
- slides[current].classList.add('active');
-},3500);
+    <div id="particles-js"></div>
 
-// WhatsApp popup message
-function showMsg(){
- let msg=document.getElementById('whatsappMsg');
- msg.style.display='block';
- setTimeout(()=>{
-   msg.style.display='none';
- },5000);
-}
+    <div class="robert-container">
+        <div id="lottie-robert"></div>
+        <div class="speech-bubble" id="robert-msg">Welcome to the Wedding App!</div>
+    </div>
 
-// Music button
-const musicBtn=document.getElementById('musicBtn');
-const bgMusic=document.getElementById('bgMusic');
-let playing=false;
-musicBtn.addEventListener('click',()=>{
- if(!playing){
-   bgMusic.play();
-   musicBtn.innerHTML='⏸ Stop Music';
- }else{
-   bgMusic.pause();
-   musicBtn.innerHTML='🎵 Music';
- }
- playing=!playing;
-});
+    <div class="top-marquee">
+        <span>💎 Puja ❤️ Jeetu | Engagement Ceremony 24 April 2026 | Digital Experience By Riteek | Enjoy The Memories 💎</span>
+    </div>
 
-// Guest wishes button animation
-document.querySelectorAll('.btn').forEach(btn=>{
- btn.addEventListener('click',()=>{
-   btn.innerHTML='✨ Loading...';
-   setTimeout(()=>{
-     btn.innerHTML='Done ✅';
-   },1500);
- });
-});
-</script></body>
+    <header class="main-header">
+        <h1>Puja ❤️ Jeetu</h1>
+        <p style="color: var(--gold); font-family: 'Cinzel Decorative'; font-size: 0.8rem; letter-spacing: 4px;">THE ROYAL UNION</p>
+    </header>
+
+    <div class="slider-box">
+        <div class="slide active"><img src="1.jpg"></div>
+        <div class="slide"><img src="2.jpg"></div>
+        <div class="slide"><img src="3.jpg"></div>
+        <div class="slide"><img src="4.jpg"></div>
+        <div class="slide"><img src="5.jpg"></div>
+        <div class="slide"><img src="6.jpg"></div>
+        <div class="slide"><img src="7.jpg"></div>
+        <div class="slide"><img src="8.jpg"></div>
+    </div>
+
+    <h2 class="section-title">DOWNLOAD MEMORIES</h2>
+    <div class="grid-container">
+        <div class="folder-card">
+            <span class="badge badge-active">AVAILABLE</span>
+            <i class="fas fa-folder-open" style="font-size: 2.5rem; color: var(--gold);"></i>
+            <h3 style="margin-top: 10px;">Set 01 (01-37)</h3>
+            <button class="btn-action" onclick="smartDownload()">DOWNLOAD NOW</button>
+        </div>
+        <div class="folder-card">
+            <span class="badge badge-soon">COMING SOON</span>
+            <i class="fas fa-folder" style="font-size: 2.5rem; color: #444;"></i>
+            <h3 style="margin-top: 10px;">Set 02 (38-50)</h3>
+            <button class="btn-action btn-disabled">WAITING...</button>
+        </div>
+        <div class="folder-card">
+            <span class="badge badge-soon">COMING SOON</span>
+            <i class="fas fa-folder" style="font-size: 2.5rem; color: #444;"></i>
+            <h3 style="margin-top: 10px;">Set 03 (51-90)</h3>
+            <button class="btn-action btn-disabled">WAITING...</button>
+        </div>
+    </div>
+
+    <div class="grid-container" style="padding-top: 0;">
+        <div class="folder-card">
+            <h3>Blessings</h3>
+            <input type="text" id="bName" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid #333; color:white; padding:10px; border-radius:8px; margin-top:10px;" placeholder="Name">
+            <textarea id="bMsg" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid #333; color:white; padding:10px; border-radius:8px; margin-top:10px;" rows="2" placeholder="Blessing"></textarea>
+            <button class="btn-action" onclick="sendWhatsApp('blessing')">SUBMIT</button>
+        </div>
+        <div class="folder-card">
+            <h3>Help Center</h3>
+            <textarea id="hMsg" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid #333; color:white; padding:10px; border-radius:8px; margin-top:10px;" rows="4" placeholder="How can we help?"></textarea>
+            <button class="btn-action" onclick="sendWhatsApp('help')">GET HELP</button>
+        </div>
+    </div>
+
+    <section style="text-align: center; padding-bottom: 50px;">
+        <h2 class="section-title">DIGITAL SHAGUN</h2>
+        <div class="qr-card">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=9693782812@upi&pn=Riteek" style="width: 150px;">
+        </div>
+        <p style="margin-top: 10px; font-weight: bold; color: var(--gold);">UPI: 9693782812@upi</p>
+    </section>
+
+    <div class="fab-group">
+        <div class="fab" style="background: #ff0066;" onclick="toggleMusic()"><i class="fas fa-music" id="mIcon"></i></div>
+        <a href="https://wa.me/919693782812" class="fab" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <audio id="player" loop><source src="song.mp3" type="audio/mpeg"></audio>
+
+    <footer style="text-align: center; padding: 20px; border-top: 1px solid #222; opacity: 0.5; font-size: 10px;">
+        MADE WITH LOVE BY RITEEK
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {"particles":{"number":{"value":60},"color":{"value":"#D4AF37"},"size":{"value":2},"move":{"speed":1.5}}});
+
+        lottie.loadAnimation({ container: document.getElementById('lottie-loader'), renderer: 'svg', loop: true, autoplay: true, path: 'https://assets9.lottiefiles.com/packages/lf20_myejiobi.json' });
+        lottie.loadAnimation({ container: document.getElementById('lottie-robert'), renderer: 'svg', loop: true, autoplay: true, path: 'https://assets2.lottiefiles.com/packages/lf20_96bovdur.json' });
+
+        // Slider logic
+        let cur = 0; const slides = document.querySelectorAll('.slide');
+        setInterval(() => { slides[cur].classList.remove('active'); cur = (cur + 1) % slides.length; slides[cur].classList.add('active'); }, 3500);
+
+        // 50+ Robert Messages
+        const robertMessages = [
+            "Shubh Vivah! ✨", "Aapka swagat hai!", "Download fast karein!", "Don't forget to bless them ❤️", "Jai Shree Ganesh 🙏",
+            "Sada Saubhagyavati Bhava!", "What a beautiful day!", "Need help? Ask me!", "QR Code niche hai!", "Premium photos dekhein!",
+            "Love is in the air! 🌹", "Best wishes to the couple!", "24 April 2026 Yaad rakhein!", "Riteek ne banaya hai! 😎",
+            "Aapki blessings zaruri hain!", "Photos download ho rahi hain?", "Stay tuned for more pics!", "Wedding vibes only! ✨",
+            "Ek pyaara sa message likhein!", "Shagun dena mat bhulna! 💰", "Music on karein! 🎵", "Enjoy the ceremony!",
+            "Together Forever! 💍", "Made for each other!", "Welcome to the gala!", "Premium memories inside!", "Swipe down for more!",
+            "Hello Guest! How are you?", "Aapka aashirwad chahiye!", "Golden moments strictly!", "Cinematic shots available!",
+            "Fastest download enabled!", "Support chahiye toh click karein!", "Keep Smiling! 😊", "Royal Engagement vibes!",
+            "Puja ❤️ Jeetu Forever!", "Don't miss the video!", "Check Set 01 photos!", "Wait for Set 02!", "Fast loading active!",
+            "Clean UI, Premium Feel!", "Best Wedding App 2026!", "Share with family!", "Blessing submit karein!", "Robert is here to help!",
+            "Have a great time!", "Celebrate love! 🎉", "Premium gold design!", "Stay blessed!", "Thanks for visiting!"
+        ];
+
+        function showRobertMsg() {
+            const bubble = document.getElementById('robert-msg');
+            bubble.innerText = robertMessages[Math.floor(Math.random() * robertMessages.length)];
+            bubble.style.opacity = 1;
+            setTimeout(() => { bubble.style.opacity = 0; }, 4000);
+        }
+        setInterval(showRobertMsg, 8000);
+
+        // Smart Download
+        function smartDownload() {
+            const bubble = document.getElementById('robert-msg');
+            bubble.innerText = "Thoda wait kijiye... Aapka file download ho raha hai! ✨";
+            bubble.style.opacity = 1;
+            
+            setTimeout(() => {
+                window.location.href = "https://docs.google.com/uc?export=download&id=1k3i6r9c87ir9OQBocEgvYlrk_MiiONIP";
+            }, 2000);
+            
+            setTimeout(() => { bubble.style.opacity = 0; }, 5000);
+        }
+
+        function sendWhatsApp(type) {
+            let n, m, f;
+            if(type === 'blessing') {
+                n = document.getElementById('bName').value;
+                m = document.getElementById('bMsg').value;
+                f = `🌸 *Blessing:* ${m} - *From:* ${n}`;
+            } else {
+                m = document.getElementById('hMsg').value;
+                f = `🆘 *Help Request:* ${m}`;
+            }
+            if(!m) return alert("Fill message!");
+            window.open(`https://wa.me/919693782812?text=${encodeURIComponent(f)}`, '_blank');
+        }
+
+        const p = document.getElementById('player');
+        function toggleMusic() {
+            if(p.paused) { p.play(); document.getElementById('mIcon').className = "fas fa-pause"; }
+            else { p.pause(); document.getElementById('mIcon').className = "fas fa-music"; }
+        }
+
+        window.onload = () => { setTimeout(() => { document.getElementById('loader').style.display = 'none'; showRobertMsg(); }, 1500); };
+    </script>
+</body>
 </html>
