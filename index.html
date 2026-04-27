@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puja ❤️ Jeetu | The Royal Union</title>
     
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "0f6fd513-9c94-4e5c-b5e2-88effe8315ae",
+        });
+      });
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -16,71 +26,49 @@
             --glass: rgba(255, 255, 255, 0.05);
             --premium-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 45%, #b38728 70%, #fbf5b7 100%);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--dark-royal); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-
-        /* --- Loader --- */
         #loader { position: fixed; height: 100vh; width: 100%; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
         #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
-
-        /* --- Marquee & Header --- */
         .top-marquee { background: rgba(212, 175, 55, 0.1); color: var(--gold); padding: 10px; overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--gold); font-family: 'Cinzel Decorative'; }
         .top-marquee span { display: inline-block; animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
         .main-header { text-align: center; padding: 40px 0; }
         .main-header h1 { font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold); }
-
-        /* --- Slider (8 Pics) --- */
         .slider-box { width: 90%; max-width: 1000px; aspect-ratio: 16 / 9; margin: 10px auto 40px; position: relative; border-radius: 20px; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 1s ease-in-out; }
         .slide.active { opacity: 1; }
         .slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- Robert Robot --- */
-        .robert-container { position: fixed; bottom: 20px; left: 20px; z-index: 2000; display: flex; align-items: center; gap: 10px; pointer-events: none; }
-        #lottie-robert { width: 80px; height: 80px; pointer-events: auto; }
-        .speech-bubble { background: var(--premium-gradient); color: #000; padding: 10px 15px; border-radius: 15px 15px 15px 0; font-size: 12px; font-weight: bold; min-width: 150px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); opacity: 0; transition: 0.5s; }
+        /* --- Robert Pro UI --- */
+        .robert-container { position: fixed; bottom: 20px; left: 10px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-start; }
+        #lottie-robert { width: 110px; height: 110px; cursor: pointer; filter: drop-shadow(0 0 10px var(--gold)); pointer-events: auto; }
+        .bubble { background: var(--premium-gradient); color: #000; padding: 8px 12px; border-radius: 12px; font-size: 11px; font-weight: 800; width: 160px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); opacity: 0; transition: 0.3s; border-left: 4px solid #000; line-height: 1.3; margin-left: 20px; margin-top: -10px; pointer-events: none; min-height: 35px; }
 
-        /* --- Grid Layout --- */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 10% 40px; }
         .folder-card { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(212,175,55,0.2); padding: 25px; border-radius: 20px; text-align: center; transition: 0.3s; position: relative; }
-        .folder-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        
         .badge { position: absolute; top: 10px; right: 10px; font-size: 10px; padding: 4px 10px; border-radius: 10px; font-weight: bold; }
         .badge-active { background: #25D366; color: #000; }
         .badge-soon { background: #ff3333; color: #fff; }
-
-        .btn-action { background: var(--premium-gradient); color: #000; width: 100%; padding: 12px; border-radius: 50px; border: none; font-weight: 700; margin-top: 15px; cursor: pointer; transition: 0.3s; font-family: 'Poppins'; }
-        .btn-action:hover { box-shadow: 0 0 15px var(--gold); transform: scale(1.02); }
+        .btn-action { background: var(--premium-gradient); color: #000; width: 100%; padding: 12px; border-radius: 50px; border: none; font-weight: 700; margin-top: 15px; cursor: pointer; transition: 0.3s; }
         .btn-disabled { background: #444; color: #888; cursor: not-allowed; }
-
-        /* --- Sections --- */
         .section-title { font-family: 'Cinzel Decorative', serif; font-size: 1.8rem; color: var(--gold); text-align: center; margin-top: 30px; letter-spacing: 2px; }
         .qr-card { background: white; display: inline-block; padding: 15px; border-radius: 15px; margin-top: 15px; }
-
         .fab-group { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
         .fab { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s; }
     </style>
 </head>
-<body>
+<body onclick="manualTalk()">
 
-    <div id="loader">
-        <div id="lottie-loader" style="width: 200px;"></div>
-        <h3 style="color:var(--gold); font-family:'Cinzel Decorative'; margin-top: 10px;">PREMIUM EXPERIENCE...</h3>
-    </div>
-
+    <div id="loader"><div id="lottie-loader" style="width: 200px;"></div></div>
     <div id="particles-js"></div>
 
     <div class="robert-container">
         <div id="lottie-robert"></div>
-        <div class="speech-bubble" id="robert-msg">Welcome to the Gala!</div>
+        <div class="bubble" id="robert-msg"></div>
     </div>
 
-    <div class="top-marquee">
-        <span>💎 Puja ❤️ Jeetu | Engagement Ceremony 24 April 2026 | Digital Experience By Riteek 💎</span>
-    </div>
+    <div class="top-marquee"><span>💎 Puja ❤️ Jeetu | Engagement Ceremony 24 April 2026 | Digital Experience By Riteek 💎</span></div>
 
     <header class="main-header">
         <h1>Puja ❤️ Jeetu</h1>
@@ -137,9 +125,7 @@
 
     <section style="text-align: center; padding-bottom: 50px;">
         <h2 class="section-title">DIGITAL SHAGUN</h2>
-        <div class="qr-card">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=9693782712@upi&pn=Riteek" style="width: 150px;">
-        </div>
+        <div class="qr-card"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=9693782712@upi&pn=Riteek" style="width: 150px;"></div>
         <p style="margin-top: 10px; font-weight: bold; color: var(--gold);">UPI: 9693782712@upi</p>
     </section>
 
@@ -149,62 +135,102 @@
     </div>
 
     <audio id="player" loop><source src="song.mp3" type="audio/mpeg"></audio>
+    <audio id="typeSound"><source src="https://www.soundjay.com/communication/typewriter-key-1.mp3" type="audio/mpeg"></audio>
 
-    <footer style="text-align: center; padding: 20px; border-top: 1px solid #222; opacity: 0.5; font-size: 10px;">
-        MADE WITH LOVE BY RITEEK
-    </footer>
+    <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 10px;">MADE WITH LOVE BY RITEEK</footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particles Background
         particlesJS("particles-js", {"particles":{"number":{"value":60},"color":{"value":"#D4AF37"},"size":{"value":2},"move":{"speed":1.5}}});
-
-        // Lottie Animations
         lottie.loadAnimation({ container: document.getElementById('lottie-loader'), renderer: 'svg', loop: true, autoplay: true, path: 'https://assets9.lottiefiles.com/packages/lf20_myejiobi.json' });
         lottie.loadAnimation({ container: document.getElementById('lottie-robert'), renderer: 'svg', loop: true, autoplay: true, path: 'https://assets2.lottiefiles.com/packages/lf20_96bovdur.json' });
 
-        // Slider Logic (8 Pics)
         let cur = 0; const slides = document.querySelectorAll('.slide');
-        setInterval(() => { 
-            slides[cur].classList.remove('active'); 
-            cur = (cur + 1) % slides.length; 
-            slides[cur].classList.add('active'); 
-        }, 3500);
+        setInterval(() => { slides[cur].classList.remove('active'); cur = (cur + 1) % slides.length; slides[cur].classList.add('active'); }, 3500);
 
-        // Smart Download (No Refresh)
-        function smartDownload(fileId) {
+        const bMsg = [
+            "Pranam! Riteek Bhaiya ke App me Aapka Swagat hye! 🙏",
+            "Ka batain! Riteek Babu hamar bahut khayal rakhenle mardey! 🥺",
+            "Riteek bhaiya ekdum hira baane, raua sab khatir mehnat kailen ba.",
+            "Raua sab hamar VIP guest bani, khush rahi nu! ✨",
+            "Riteek bhaiya jaisan dunya mein kehu naikhe, bahut nek baane. 🥺",
+            "Haste rahi, aur Riteek bhaiya ke e sundar tohfa ke enjoy kari! ✨"
+        ];
+
+        let isTalking = false;
+
+        function speakAndType(text) {
+            if(isTalking) return;
+            isTalking = true;
+
             const bubble = document.getElementById('robert-msg');
-            bubble.innerText = "Downloading started... ✨";
+            const sound = document.getElementById('typeSound');
+            
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'hi-IN';
+            utter.pitch = 1.4;
+            utter.rate = 0.75; 
+
             bubble.style.opacity = 1;
-            
-            const link = document.createElement('a');
-            link.href = "https://docs.google.com/uc?export=download&id=" + fileId;
-            link.style.display = "none";
-            document.body.appendChild(link);
-            
-            setTimeout(() => { 
-                link.click(); 
-                document.body.removeChild(link);
-                bubble.style.opacity = 0; 
-            }, 2000);
+            bubble.innerHTML = "";
+            let charIndex = 0;
+
+            utter.onstart = () => {
+                const typing = setInterval(() => {
+                    if (charIndex < text.length) {
+                        bubble.innerHTML += text.charAt(charIndex);
+                        sound.currentTime = 0;
+                        sound.play(); 
+                        charIndex++;
+                    } else {
+                        clearInterval(typing);
+                    }
+                }, 85);
+            };
+
+            window.speechSynthesis.speak(utter);
+
+            utter.onend = () => {
+                setTimeout(() => { 
+                    bubble.style.opacity = 0; 
+                    isTalking = false;
+                }, 3000);
+            };
         }
 
-        // WhatsApp Functions
+        function manualTalk() {
+            if(window.speechSynthesis.speaking || isTalking) return;
+            const m = bMsg[Math.floor(Math.random() * bMsg.length)];
+            speakAndType(m);
+        }
+
+        function smartDownload(fileId) {
+            speakAndType("Rua thoda ruki, Riteek bhaiya ke hukum se download shuru ho rahal ba! ✨");
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = "https://docs.google.com/uc?export=download&id=" + fileId;
+                link.click();
+            }, 5000);
+        }
+
         function sendWhatsApp(type) {
-            let msg = (type === 'blessing') ? document.getElementById('bMsg').value : document.getElementById('hMsg').value;
-            if(!msg) return alert("Please fill the message!");
-            window.open(`https://wa.me/919693782712?text=${encodeURIComponent(msg)}`, '_blank');
+            let m = (type === 'blessing') ? document.getElementById('bMsg').value : document.getElementById('hMsg').value;
+            if(!m) return alert("Type something!");
+            window.open(`https://wa.me/919693782712?text=${encodeURIComponent(m)}`, '_blank');
         }
 
-        // Music Control
         const p = document.getElementById('player');
         function toggleMusic() {
             if(p.paused) { p.play(); document.getElementById('mIcon').className = "fas fa-pause"; }
             else { p.pause(); document.getElementById('mIcon').className = "fas fa-music"; }
         }
 
-        // Loader Timeout
-        window.onload = () => { setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 1500); };
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                speakAndType("Pranam! Riteek Bhaiya ke App me Aapka Swagat hye! 🥺 Raua sab kaise bani?");
+            }, 2000);
+        };
     </script>
 </body>
 </html>
